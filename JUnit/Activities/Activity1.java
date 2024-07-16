@@ -1,4 +1,4 @@
-package demos;
+package com.ibm.junit.fst_m1_junit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
