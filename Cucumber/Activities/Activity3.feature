@@ -1,4 +1,4 @@
-@Activity3
+@activity3
 Feature: Testing with Tags
 
 @SimpleAlert @SmokeTest
