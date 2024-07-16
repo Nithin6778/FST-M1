@@ -1,4 +1,4 @@
-@Activity1
+@activity1
 Feature: Basic Syntax
 
 Scenario: Opening a webpage using Selenium
