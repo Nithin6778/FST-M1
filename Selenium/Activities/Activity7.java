@@ -1,4 +1,4 @@
-package Activities1;
+package selenium;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

@@ -1,0 +1,9 @@
+dict={
+    "apple":250
+    "banana":100
+    "grape":200
+}
+if(dict.contains("apple")):
+print("fruit is available")
+else:
+print("fruit is not available")
