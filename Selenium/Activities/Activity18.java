@@ -6,7 +6,6 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -24,8 +23,7 @@ public class Activity18 {
 		driver.manage().window().maximize();
 		
 		//Open browser
-		
-		driver.get("https://v1.training-support.net/selenium/selects");
+		driver.get(" 	");
 		//Title of page
 		System.out.println("page title :" +driver.getTitle());
 		// Find the dropdown
