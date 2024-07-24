@@ -23,7 +23,7 @@ public class Activity18 {
 		driver.manage().window().maximize();
 		
 		//Open browser
-		driver.get(" 	");
+		driver.get("https://v1.training-support.net/selenium/selects");
 		//Title of page
 		System.out.println("page title :" +driver.getTitle());
 		// Find the dropdown
