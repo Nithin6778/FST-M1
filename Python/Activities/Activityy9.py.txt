@@ -1,0 +1,13 @@
+mylist1=[1,3,4,5,6,8]
+mylist2=[2,10,12,7,9,19]
+mylist3=[]
+print(f'(Elements in firstlist are:" + {mylist1})')
+print(f'(Elements in secondlist are:" + {mylist2})')
+print(f'(Elements in thirdlist are:" + {mylist3})')
+for i in mylist1:
+     if(i%2!=0):
+        mylist3.append(i)
+for i in mylist2:
+    if(i %2==0):
+        mylist3.append(i)
+print(mylist3)
