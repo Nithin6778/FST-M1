@@ -20,47 +20,63 @@ public class Activity5 {
         // Set up the Firefox driver
         WebDriverManager.firefoxdriver().setup();
         //Create a new instance of the Firefox driver
+        driver = new FirefoxDriver();package Activities;
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Activity6 {
+    WebDriver driver;
+    WebDriverWait wait;
+
+    @BeforeClass
+    public void beforeClass() {
+        // Set up the Firefox driver
+        WebDriverManager.firefoxdriver().setup();
+        // Initialize the Firefox driver
         driver = new FirefoxDriver();
-            
-        //Open the browser
-        driver.get("https://v1.training-support.net/selenium/target-practice");
+        // Initialize the wait object
+        wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        
+        //Open browser
+        driver.get("https://v1.training-support.net/selenium/login-form");
     }
     
-    @Test (groups = {"HeaderTests", "ButtonTests"})
-    public void pageTitleTest() {
-        String titleofpage = driver.getTitle();
-        System.out.println("Title is: " + titleofpage);
-        Assert.assertEquals(titleofpage, "Target Practice");
-    }
-    
-    @Test (dependsOnMethods = {"pageTitleTest"}, groups = {"HeaderTests"})
-    public void HeaderTest1() {
-        WebElement header3 = driver.findElement(By.cssSelector("h3#third-header"));
-        Assert.assertEquals(header3.getText(), "Third header");
-    }
-    
-    @Test (dependsOnMethods = {"pageTitleTest"}, groups = {"HeaderTests"})
-    public void HeaderTest2() {
-        WebElement header5 = driver.findElement(By.cssSelector("h3#third-header"));
-        Assert.assertEquals(header5.getCssValue("color"), "rgb(251, 189, 8)");
-    }
-    
-    @Test (dependsOnMethods = {"pageTitleTest"}, groups = {"ButtonTests"})
-    public void ButtonTest1() {
-        WebElement button1 = driver.findElement(By.cssSelector("button.olive"));
-        Assert.assertEquals(button1.getText(), "Olive");
-    }
-    
-    @Test (dependsOnMethods = {"pageTitleTest"}, groups = {"ButtonTests"})
-    public void ButtonTest2() {
-        WebElement button2 = driver.findElement(By.cssSelector("button.brown"));
-        Assert.assertEquals(button2.getCssValue("color"), "rgb(255, 255, 255)");
+    @Test
+    @Parameters({"username", "password"})
+    public void loginTestCase(String username, String password) {
+        //Find username and pasword fields
+        WebElement usernameField = driver.findElement(By.id("username"));
+        WebElement passwordField = driver.findElement(By.id("password"));
+        
+        //Enter values
+        usernameField.sendKeys(username);
+        passwordField.sendKeys(password);
+        
+        //Click Log in
+        driver.findElement(By.cssSelector("button[type='submit']")).click();
+        
+        //Assert Message
+        String loginMessage = driver.findElement(By.id("action-confirmation")).getText();
+        Assert.assertEquals(loginMessage, "Welcome Back, admin");
     }
 
-    
-    @AfterTest(alwaysRun = true)
-    public void afterMethod() {
-        
+    @AfterClass
+    public void afterClass() {
+        //Close browser
         driver.close();
     }
 
